@@ -1,18 +1,19 @@
 import axios from 'axios';
 
-const url = 'http://localhost:3000';
+//const url = 'http://localhost:3000';
+const url = 'https://shopping-back-demo.herokuapp.com';
 
 const productRequest = axios.create({
-    baseURL: 'http://localhost:3000'
+    baseURL: url
   });
 
 const memberRequest = axios.create({
-    baseURL: 'http://localhost:3000'
+    baseURL: url
   });  
 
 
 const orderRequest = axios.create({
-    baseURL: 'http://localhost:3000'
+    baseURL: url
   });   
 
 
