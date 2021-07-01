@@ -60,7 +60,7 @@ export default{
 .sideshow ul{
     width:620px;
     height:320px;
-    background:blue;
+    //background:blue;
     position:relative;
 }
 .sideshow ul>img{
@@ -78,7 +78,7 @@ export default{
     max-height:320px;
     width:100%;
     height:100%;
-    background:green;
+    //background:green;
     filter:alpha(opacity=0);
     animation:silder 15s linear infinite;
 }

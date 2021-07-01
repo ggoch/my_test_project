@@ -38,8 +38,8 @@ import {store} from '../store.js'
 export default{
   data(){
     return{
-      password:'2',
-      email:'12345@gmail.com'
+      password:,
+      email:
     }
   },
   methods:{
