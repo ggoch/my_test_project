@@ -4,10 +4,10 @@
       <div class = "main-header">
           <div class = "sideshow">
             <ul>
-              <img src="../assets/arise2.jpg" alt="艾莉絲.格雷拉特" />
-              <li><a href="#"><img src="../assets/arise2.jpg" alt="艾莉絲.格雷拉特" /></a></li>
-              <li><a href="#"><img src="../assets/arise2.jpg" alt="艾莉絲.格雷拉特" /></a></li>
-              <li><a href="#"><img src="../assets/arise2.jpg" alt="艾莉絲.格雷拉特" /></a></li>
+              <li><a href="#"><img src="../assets/sideshow1.jpg" alt="" /></a></li>
+              <li><a href="#"><img src="../assets/sideshow2.jpg" alt="" /></a></li>
+              <li><a href="#"><img src="../assets/sideshow3.jpg" alt="" /></a></li>
+              <img href="#"><img src="../assets/sideshow1.jpg" alt="" />
             </ul>
           </div>
           <div class = "category">
@@ -55,11 +55,12 @@ export default{
     width:100%;
     display:flex;
     justify-content:center;
-    background:green;
+    //background:green;
 }
 .sideshow ul{
-    width:420px;
-    height:420px;
+    width:620px;
+    height:320px;
+    background:blue;
     position:relative;
 }
 .sideshow ul>img{
@@ -72,14 +73,17 @@ export default{
     position:absolute;
     top:0;
     left:0;
-    //opacity:0;
+    opacity:0;
+    max-width:620px;
+    max-height:320px;
+    width:100%;
+    height:100%;
+    background:green;
     filter:alpha(opacity=0);
-    //animation:silder 15s linear infinite;
+    animation:silder 15s linear infinite;
 }
 .sideshow li img{
     //object-fit:cover;
-    max-width:420px;
-    max-height:420px;
     width:100%;
     height:100%;
 }

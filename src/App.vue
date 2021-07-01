@@ -2,9 +2,10 @@
   <div id="app">
     <div class="container">
       <div class="heaterTitle">     <!-- 標頭列 -->
-        <div class="imgHeater">     <!-- 標頭圖片 -->
+        <!-- <div class="imgHeater">     
           <a href="#"><img src="" /></a>
         </div>
+        -->
 
         <div class="search">        <!-- 搜尋框 -->
           <img src="./assets/icon/search32px.png" />
@@ -187,7 +188,7 @@ html,body{
 }
 @media(max-width:550px){
   .heaterTitle .search .form{
-    width:150px;
+    width:165px;
   }
   .heaterTitle .search .text{
     font-size:8px;

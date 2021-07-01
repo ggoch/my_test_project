@@ -55,7 +55,6 @@ export default{
             memberEmail:'',
             name:'',
             password:'',
-            memberData:'',
             preview: null,
             image: null,
         }
@@ -64,7 +63,8 @@ export default{
         async update(){
             let name = store.methods.xssCheck(this.name);
             let password = store.methods.xssCheck(this.password);
-            let checkResult = this.checkData([name,password]);
+            let checkResult = this.checkUpdate([name,password]);
+
 
             if(checkResult == "error"){
               alert("資料未完整輸入");
@@ -75,6 +75,7 @@ export default{
                 name:name,
                 password:password
             };
+            
 
             store.status.updateStatus = await store.router.update(data);
             if(store.status.updateStatus == "會員資料更新成功"){
@@ -162,6 +163,9 @@ export default{
     border:1px solid #FFBB77;
     border-radius:2px;
     cursor:pointer;
+}
+.modify-data input[type="button"]:hover{
+  box-shadow:2px 2px 3px #000;
 }
 .preview{
   margin-left:100px;

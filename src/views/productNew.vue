@@ -47,7 +47,7 @@ export default{
 </script>
 <style>
 #product-new .product-list{
-  background:green;
+  //background:green;
   margin:20px 0;
   //padding:0 150px;
 }
