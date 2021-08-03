@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-//const url = 'http://localhost:3000';
-const url = 'https://shopping-back-demo.herokuapp.com';
+const url = 'http://localhost:3000';
+//const url = 'https://shopping-back-demo.herokuapp.com';
 
 const productRequest = axios.create({
     baseURL: url

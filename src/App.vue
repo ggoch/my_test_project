@@ -22,7 +22,7 @@
           <router-link v-if="loginStatus == '登入成功'" @click.native="logout" to='/'>登出</router-link>
         </div>
       </div>
-      <div class="nav" :class="activeApp">
+      <div class="nav" :class="activeApp">    <!-- 導行列 -->
         <label class="menu" for="menu-switch">
           <img src="./assets/icon/menu.png" />
         </label>
@@ -62,6 +62,7 @@
 
 <script>
 import {store} from './store.js'
+import {mapGetters, mapActions} from 'vuex'
 
 export default {
   name: 'App',
@@ -71,6 +72,8 @@ export default {
       searchName:'',
       activeApp:'home'
     }
+  },
+  computed:{
   },
   methods:{
     async logout(){

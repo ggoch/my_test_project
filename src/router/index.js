@@ -24,6 +24,8 @@ import Complete from '../views/memberPage/complete.vue'
 import SignUp from '../views/signUp.vue'
 import SignUpResult from '../views/signupResult.vue'
 
+import TestPage from '../views/testPage.vue'
+
 import {store} from '../store.js'
 
 
@@ -135,6 +137,11 @@ const routes = [
     path:'/supplierAllBack',
     name:SupplierAllBack,
     component:SupplierAllBack
+  },
+  {
+    path:'/testPage',
+    name:TestPage,
+    component:TestPage
   },
   {
     path: '*',

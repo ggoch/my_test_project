@@ -27,39 +27,6 @@ var completeStatus='';
 var searchStatus='';
 
 
-/*var commodity = [
-    {
-    name:'愛麗絲',
-    imgurl:imgurl,
-    narrate:'黏土人偶 無職轉生愛麗絲',
-    price:2800
-    },
-    {
-        name:'愛麗絲2',
-        imgurl:imgurl,
-    narrate:'黏土人偶 無職轉生愛麗絲',
-    price:2800
-    },
-    {
-        name:'愛麗絲3',
-        imgurl:imgurl,
-    narrate:'黏土人偶 無職轉生愛麗絲',
-    price:2800
-    },
-    {
-        name:'愛麗絲4',
-        imgurl:imgurl,
-    narrate:'黏土人偶 無職轉生愛麗絲',
-    price:2800
-    },
-    {
-        name:'愛麗絲5',
-        imgurl:imgurl,
-    narrate:'黏土人偶 無職轉生愛麗絲',
-    price:2800
-    },
-];*/
-
 var recommend = {
     hot:{
         name:'愛麗絲',
@@ -100,7 +67,6 @@ var pretest =  `購買 說 明 ★
     
 ★ 所有商品都會有延期的可能，是否延期可至詢問賣家詢問`;
 
-var ss = 'fuck';
 var registorStatus = '';
 
 //顯示商品相關函式

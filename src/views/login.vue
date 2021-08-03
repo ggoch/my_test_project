@@ -13,7 +13,7 @@
         </div>
         <div class="login-button">
           <div>
-            <input type="button" @click="login" value="登入">
+            <input type="button" @click="callLogin" value="登入">
           </div>
           <div>  
             <input type="button" value="忘記密碼">
@@ -34,6 +34,7 @@
 
 <script>
 import {store} from '../store.js'
+import {mapGetters,mapActions} from 'vuex'
 
 export default{
   data(){
@@ -42,19 +43,28 @@ export default{
       email:''
     }
   },
+  computed:{
+    ...mapGetters({
+      loginStatus:'getLoginStatus'
+    })
+  },
   methods:{
+    ...mapActions([
+      'login'
+    ]),
     addMember(){
       this.$router.push({path:'/sign_up'});
     },
-    async login(){
+    async callLogin(){
       let password = store.methods.xssCheck(this.password);
       let email = store.methods.xssCheck(this.email);
       let data = {
         password:password,
         email:email
       };
-      store.status.loginStatus = await store.router.login(data);
-      if(store.status.loginStatus == '登入成功'){
+      await this.login(data);
+      //store.status.loginStatus = await store.router.login(data);
+      if(this.loginStatus == '登入成功'){
         this.$router.push({path:'/'});
       }else{
         alert("登入失敗,請重新登入");
