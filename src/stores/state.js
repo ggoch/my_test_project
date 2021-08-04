@@ -1,6 +1,13 @@
 export const state = {
     count:0,
     status:{
-        loginTest:'登入失敗',
+        login:'登入失敗',
+        registor:{
+            status:'',
+            err:'',
+            registerMember:{
+                name:''
+            }
+        }
     }
 }

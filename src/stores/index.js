@@ -16,7 +16,6 @@ const stores = new Vuex.Store({
   actions,
 
   // 嚴格模式，禁止直接修改 state
-
+  strict: true
 });
-//  strict: true
 export default stores

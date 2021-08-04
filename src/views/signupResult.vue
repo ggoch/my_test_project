@@ -1,15 +1,16 @@
 <template>
 <div class="signup-result">
   <div>
-    <h1>{{status}}</h1>
-    <p v-if="registerMember">恭喜{{registerMember.name}}註冊成功</p>
-    <p v-if="err">{{err}} 請重新註冊</p>
+    <h1>{{registorStatus.status}}</h1>
+    <p v-if="registorStatus.err">{{status.err}} 請重新註冊</p>
+    <p v-else>{{registorStatus.registerMember.name}}註冊成功</p>
     <p>10 秒後將跳轉到首頁</p>
   </div>  
 </div>
 </template>
 <script>
 import {store} from '../store.js'
+import {mapGetters} from 'vuex'
 
 export default{
     data(){
@@ -19,13 +20,18 @@ export default{
             err:''
         }
     },
+    computed:{
+        ...mapGetters({
+            registorStatus:'getRegistorStatus'
+        })
+    },
     created(){
-        this.status = store.status.registorStatus.status;
+        /*this.status = store.status.registorStatus.status;
         if(this.status === '註冊失敗'){
             this.err= store.status.registorStatus.err;
         }else if(this.status === '註冊成功'){
             this.registerMember = store.status.registorStatus.registerMember;
-        }
+        }*/
     },
     mounted(){
         setTimeout(() => {this.$router.push({path:'/'})},1000 * 10);

@@ -39,6 +39,7 @@
 
 <script>
 import {store} from '../store.js'
+import {mapGetters,mapActions} from 'vuex'
 
 
 export default{
@@ -53,6 +54,9 @@ export default{
         }
     },
     methods:{
+      ...mapActions([
+        'registor'
+      ]),
       checkData(dataArr){
         for(let i=0;i<dataArr.length;i++){
           if(dataArr[i] == ""){
@@ -78,7 +82,8 @@ export default{
             password:password,
             email:email
           };
-          store.status.registorStatus = await store.router.registor(data);
+          this.registor(data);
+          //store.status.registorStatus = await store.router.registor(data);
           this.$router.push({path:'/sign_up/signup_result'});
       }
     },
