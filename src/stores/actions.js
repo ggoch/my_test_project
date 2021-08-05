@@ -38,6 +38,17 @@ export const showProduct = async ({commit}) => {
     commit(types.SHOWPRODUCT,data);
 }
 
+//顯示最新商品
+export const showNewProduct = async ({commit}) => {
+    let data = await apiGetProduct().then(res => res.data.result).catch(function(err){
+        if(err){
+            return console.log(err);
+        }
+    });
+
+    commit(types.SHOWNEWPRODUCT,data);
+}
+
 //搜尋商品
 export const searchProduct = async ({commit},searchName) => {
     let data = await apiPostSearchProduct(searchName).then(res => res.data.result).catch(function(err){

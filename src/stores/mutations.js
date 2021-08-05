@@ -27,6 +27,24 @@ export const mutations = {
 
       state.data.commodity = commodity;
     },
+    [types.SHOWNEWPRODUCT](state,data){
+      let commodity = [];
+      for(let i=data.length-1;i>=0;i--){
+          commodity.push(
+              {
+                  id:data[i].id,
+                  name:data[i].name,
+                  imgurl:data[i].img,
+                  price:data[i].price,
+                  number:data[i].quantity,
+                  narrate:data[i].remark,
+                  time:data[i].create_date
+              }
+          );
+      }
+      
+      state.data.commodity = commodity;
+    },
     [types.SEARCHPRODUCT](state,data){
       let commodity = [];
       for(let i=0;i<data.length;i++){

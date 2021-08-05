@@ -22,15 +22,24 @@
 import commodity from '../components/commodity.vue';
 import productHeader from '../components/productHeader.vue';
 import {store} from '../store.js';
+import {mapGetters,mapActions} from 'vuex';
 
 export default{
     data(){
         return{
-            commoditys:store.state.commodity,
+            //commoditys:store.state.commodity,
             productHeader:store.state.recommend
         }
     },
+    computed:{
+      ...mapGetters({
+        commoditys:'getCommodity'
+      })
+    },
     methods:{
+      ...mapActions([
+        'showNewProduct'
+      ]),
       updateProduct(){
         store.state.searchProductList = store.state.homeCommodity;
       }
@@ -40,8 +49,9 @@ export default{
       productHeader
     },
     async mounted(){
-      await store.router.showNewProduct();
-      this.commoditys = store.state.commodity
+      this.showNewProduct();
+      /*await store.router.showNewProduct();
+      this.commoditys = store.state.commodity*/
     }
 }
 </script>
