@@ -30,7 +30,7 @@
         <ul>  
           <li><router-link class="home" @click.native="makeActiveApp('home')" to='/'>首頁</router-link></li>
           <li><router-link class="product_new" @click.native="makeActiveApp('product_new')" to='/product_new'>新品特區</router-link></li>
-          <li><router-link class="product" to='/product' @click.native="resetProduct;makeActiveApp('product')">商品列表</router-link></li>
+          <li><router-link class="product" @click.native="makeActiveApp('product')" to='/product'>商品列表</router-link></li>
           <!-- <li><router-link class="pp" to='/pp'>售票預購</router-link></li> -->
         </ul>
       </div>
@@ -75,7 +75,15 @@ export default {
   },
   computed:{
   },
+  provide(){
+    return{
+      reload:this.reload
+    }
+  },
   methods:{
+    ...mapActions([
+      'searchProduct',
+    ]),
     async logout(){
       localStorage.removeItem('token');
       store.status.loginStatus = "登入失敗";
@@ -86,20 +94,21 @@ export default {
       let data = {
         searchName:searchName
       };
-      await store.router.searchProduct(data);
+      await this.searchProduct(data);
       if(this.$route.path == '/product'){
         this.$router.replace({path:'/supplierAllBack'});
       }else{
         this.$router.push({path:'/product'});
       }
     },
-    resetProduct(){
-      store.state.searchProductList = '';
-      store.status.searchStatus = "";
-    },
     makeActiveApp(item){
-            this.activeApp = item;
-        }
+      this.activeApp = item;
+    },
+    reload(){
+      alert("test2");
+      this.isRouterAlive = false;
+      this.$nextTick( ()=> { this.isRouterAlive=true } );
+    }
   },
   mounted(){
   },

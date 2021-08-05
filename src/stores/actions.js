@@ -27,16 +27,34 @@ export const registor = async ({commit},data) => {
     commit(types.REGISTOR,result);
 }
 
+//顯示商品
+export const showProduct = async ({commit}) => {
+    let data = await apiGetProduct().then(res => res.data.result).catch(function(err){
+        if(err){
+            return console.log(err);
+        }
+    });
+
+    commit(types.SHOWPRODUCT,data);
+}
+
+//搜尋商品
+export const searchProduct = async ({commit},searchName) => {
+    let data = await apiPostSearchProduct(searchName).then(res => res.data.result).catch(function(err){
+        if(err){
+            console.log(err);
+        }
+    });
+
+    commit(types.SEARCHPRODUCT,data);
+}
 
 
-//測試
-export const actionIncrease = ({ commit }) => {
-    console.log('actionIncrease');
-    commit(types.INCREASE);
-  }
-  
-  export const actionDecrease = ({ commit }) => {
-    console.log('actionDecrease');
-    commit(types.DECREASE);
-  }
+//重置搜尋狀態
+export const resetSearchStatus = ({commit}) => {
+    commit(types.RESETSEARCHSTATUS);
+}
+
+
+
 

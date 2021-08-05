@@ -9,11 +9,48 @@ export const mutations = {
       state.status.registor.err = status.err;
       state.status.registor.registerMember.name = status.registerMember.name;
     },
-    [types.INCREASE] (state) {
-        // 在 mutation 改變 state（只有 mutation 可以改變！）
-        state.count += 1;
-      },
-      [types.DECREASE] (state) {
-        state.count -= 1;
-      },
+    [types.SHOWPRODUCT](state,data){
+      let commodity = [];
+      for(let i=0;i<data.length;i++){
+          commodity.push(
+              {
+                  id:data[i].id,
+                  name:data[i].name,
+                  imgurl:data[i].img,
+                  price:data[i].price,
+                  number:data[i].quantity,
+                  narrate:data[i].remark,
+                  time:data[i].create_date
+              }
+          );
+      }
+
+      state.data.commodity = commodity;
+    },
+    [types.SEARCHPRODUCT](state,data){
+      let commodity = [];
+      for(let i=0;i<data.length;i++){
+        commodity.push(
+            {
+                id:data[i].id,
+                name:data[i].name,
+                imgurl:data[i].img,
+                price:data[i].price,
+                number:data[i].quantity,
+                narrate:data[i].remark,
+                time:data[i].create_date
+            }
+        );
+      }
+
+      if(commodity == ""){
+          state.status.searchStatus = "searchError";
+      }else{
+        state.status.searchStatus = "searchSuccess";
+        state.data.commodity = commodity;
+      }
+    },
+    [types.RESETSEARCHSTATUS](state){
+      state.status.searchStatus = "";
+    },
 }

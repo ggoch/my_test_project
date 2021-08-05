@@ -24,16 +24,29 @@
 import commodity from '../components/commodity.vue';
 import productHeader from '../components/productHeader.vue';
 import {store} from '../store.js';
+import { mapGetters,mapActions} from 'vuex';
 
 export default {
   data(){
     return{
-      commoditys:store.state.commodity,
+      
       productHeader:store.state.recommend,
       air:false
     }
   },
+  inject:['reload'],
+  computed:{
+    ...mapGetters({
+      commoditys:'getCommodity',
+      searchStatus:'getSearchStatus',
+      searchProductList:'getSearchProductList'
+    })
+  },
   methods:{
+    ...mapActions([
+      'showProduct',
+      'resetSearchStatus'
+    ]),
     updateProduct(){
       store.state.searchProductList = store.state.homeCommodity;
     }
@@ -43,18 +56,21 @@ export default {
     productHeader
   },
   async mounted(){
-    if(store.state.searchProductList == ''){
-      if(store.status.searchStatus == "error"){
-        this.air = true;
-      }else{
-        await store.router.showProduct();
-        this.commoditys = store.state.commodity;
-      }
-    }else{
-      this.commoditys = store.state.searchProductList;
+    if(this.searchStatus == ''){
+      await this.showProduct();
+    }else if(this.searchStatus == "searchError"){
+      this.air = true;
+    }else if(this.searchStatus == "searchSuccess"){
+      this.resetSearchStatus();
     }
-  }
+  },
+  destroyed(){
+    //alert("fuck");
+    /*this.resetProductContent();
+    this.reload();*/
+  },
 }
+//commoditys:this.commodityDate,
 </script>
 <style>
 /*#product .product-list{
