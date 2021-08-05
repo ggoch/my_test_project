@@ -66,6 +66,17 @@ export const resetSearchStatus = ({commit}) => {
     commit(types.RESETSEARCHSTATUS);
 }
 
+//顯示首頁商品
+export const showProductType = async ({commit},datas) => {
+    let data = await apiPostProductType(datas).then(res => res.data.result).catch(function(err){
+        if(err){
+            return console.log(err);
+        }
+    });
+
+    commit(types.SHOWPRODUCTTYPE,data);
+}
+
 
 
 

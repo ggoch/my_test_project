@@ -15,22 +15,30 @@
 <script>
 import commodity from '../../components/commodity.vue';
 import {store} from '../../store.js';
+import {mapGetters,mapActions} from 'vuex'
 
 export default{
     data(){
         return{
-            commoditys:store.state.homeCommodity
+            //commoditys:store.state.homeCommodity
         }
     },
+    computed:{
+        ...mapGetters({
+            commoditys:'getHomeCommodity'
+        })
+    },
     methods:{
+        ...mapActions([
+            'showProductType'
+        ])
     },
     components:{
         commodity
     },
     async mounted(){
-      let data = {productType:'totel'}  
-      await store.router.showProductType(data,10);
-      this.commoditys = store.state.homeCommodity
+      let data = {productType:'totel'}
+      this.showProductType(data);  
     }
 }
 </script>

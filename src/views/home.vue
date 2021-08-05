@@ -55,11 +55,12 @@ export default{
     width:100%;
     display:flex;
     justify-content:center;
-    //background:green;
+    background:green;
 }
 .sideshow ul{
     width:620px;
     height:320px;
+    display:flex;
     //background:blue;
     position:relative;
 }

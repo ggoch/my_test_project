@@ -42,8 +42,25 @@ export const mutations = {
               }
           );
       }
-      
+
       state.data.commodity = commodity;
+    },
+    [types.SHOWPRODUCTTYPE](state,data){
+      let homeCommodity = [];
+      for(let i=0;i<10;i++){
+          homeCommodity.push(
+              {
+                  id:data[i].id,
+                  name:data[i].name,
+                  imgurl:data[i].img,
+                  price:data[i].price,
+                  number:data[i].quantity,
+                  narrate:data[i].remark,
+                  time:data[i].create_date
+              }
+          );
+      }
+      state.data.homeCommodity = homeCommodity;
     },
     [types.SEARCHPRODUCT](state,data){
       let commodity = [];
