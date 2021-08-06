@@ -77,6 +77,60 @@ export const showProductType = async ({commit},datas) => {
     commit(types.SHOWPRODUCTTYPE,data);
 }
 
+//確認登入狀態
+export const checkLogin = async ({commit}) => {
+    let result = await apiCheckLogin().then(res => res.data.result).catch(function(err){
+        if(err){
+            console.log(err);
+        }
+    });
+
+    commit(types.CHECKLOGIN,result);
+}
+
+//獲取未完成訂單
+export const OrderList = async ({commit}) => {
+    let result = await apiGetOrder().then(res => res.data.result).catch(function(err){
+        if(err){
+            return console.log(err);
+        }
+    });
+
+    commit(types.GETORDERLIST,result)
+}
+
+//刪除訂單
+export const deleteOrder = async ({commit},data) => {
+    let result = await apiDeleteOrder(data).then(res => res.data.result).catch(function(err){
+        if(err){
+            console.log(err);
+        }
+    });
+
+    commit(types.DELETEORDER,result);
+}
+
+//修改商品數量
+export const updateOrder = async ({commit},data) => {
+    let result = await apiPutOrder(data).then(res => res.data.result).catch(function(err){
+        if(err){
+            console.log(err);
+        }
+    });
+
+    commit(types.UPDATEORDER,result);
+}
+
+//完成訂單
+export const completeOrder = async ({commit},data) => {
+    let result = await apiPutCompleteOrder(data).then(res => res.data.result.status).catch(function(err){
+        if(err){
+            console.log(err);
+        }
+    });
+
+    commit(types.COMPLETEORDER,result);
+}
 
 
 

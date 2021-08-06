@@ -21,6 +21,7 @@
 
 <script>
 import {store} from '../store.js';
+import {mapGetters,mapActions} from 'vuex'
 
 export default{
     data(){
@@ -28,7 +29,19 @@ export default{
             number:this.orderList.number
         }
     },
+    computed:{
+        ...mapGetters({
+            deleteOrderStatus:'getOrderDeleteStatus',
+            updateOrderStatus:'getOrderUpdateStatus',
+            completeOrderStatus:'getOrderCompleteStatus'
+        })
+    },
     methods:{
+        ...mapActions([
+            'deleteOrder',
+            'updateOrder',
+            'completeOrder'
+        ]),
         async deleteOrder(){
             let productID = String(this.orderList.productID);
             let orderID = String(this.orderList.orderID);
@@ -36,12 +49,11 @@ export default{
                 productID:productID,
                 orderID:orderID
             };
-            await store.router.deleteOrder(data);
-            if(store.status.deleteStatus !== '刪除資料成功'){
-                alert(store.status.deleteStatus);
+            this.deleteOrder(data);
+            if(this.deleteOrderStatus !== '刪除資料成功'){
+                alert(this.deleteOrderStatus);
                 alert("資料刪除失敗,請稍後重試");
             }
-            //this.$forceUpdate();
             this.$emit('refresh');
         },
         async updateOrder(){
@@ -51,8 +63,9 @@ export default{
                 orderID:this.orderList.orderID
             };
 
-            await store.router.updateOrder(data);
-            if(store.status.updateOrderStatus !== "更新訂單資料成功"){
+            //await store.router.updateOrder(data);
+            this.updateOrder(data);
+            if(this.updateOrderStatus !== "更新訂單資料成功"){
                 alert("商品數量更改失敗,請稍後再試");
             }else{
                 this.$emit('refresh');
@@ -62,8 +75,9 @@ export default{
             let data = {
                 orderID:this.orderList.orderID
             };
-            await store.router.completeOrder(data);
-            alert(store.status.completeStatus);
+            this.completeOrder(data);
+            //await store.router.completeOrder(data);
+            alert(this.completeOrderStatus);
             this.$emit('refresh');
         },    
     },

@@ -39,7 +39,6 @@ export default {
     ...mapGetters({
       commoditys:'getCommodity',
       searchStatus:'getSearchStatus',
-      searchProductList:'getSearchProductList'
     })
   },
   methods:{
@@ -65,9 +64,7 @@ export default {
     }
   },
   destroyed(){
-    //alert("fuck");
-    /*this.resetProductContent();
-    this.reload();*/
+    //this.reload();
   },
 }
 //commoditys:this.commodityDate,

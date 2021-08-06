@@ -33,15 +33,21 @@
 
 <script>
 import {store} from '../store.js'
+import {mapGetters} from 'vuex'
 
 export default{
     data(){
         return{
-            name:store.state.memberInfo.name,
+            //name:store.state.memberInfo.name,
             credit:100,
             Balance:0,
             active:'shoppingCar'
         }
+    },
+    computed:{
+        ...mapGetters({
+            name:'getMemberInfo'
+        })
     },
     methods:{
         makeActive(item){
@@ -49,8 +55,8 @@ export default{
         }
     },
     async mounted(){
-        await store.router.checkLogin();
-        this.name = store.state.memberInfo.name;
+        /*await store.router.checkLogin();
+        this.name = store.state.memberInfo.name;*/
     },
 }
 </script>

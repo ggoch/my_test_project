@@ -26,22 +26,32 @@
 <script>
 import order from '../../components/shoppingCar.vue';
 import {store} from '../../store.js';
+import {mapGetters,mapActions} from 'vuex';
 
 export default{
   data(){
     return{
-      orders:store.state.orderList,
+      //orders:store.state.orderList,
       carAir:false
     }
   },
+  computed:{
+    ...mapGetters({
+      orders:'getOrderList'
+    })
+  },
   methods:{
+    ...mapActions([
+      'orderList'
+    ]),
     async refreshOrderList(){
-      await store.router.getOrderList();
-      this.orders = store.state.orderList;
+      await this.orderList();
+      /*await store.router.getOrderList();
+      this.orders = store.state.orderList;*/
       if(this.orders == ""){
         this.carAir = true;
       }
-      this.$forceUpdate();
+      //this.$forceUpdate();
     }
   },
   components:{
@@ -49,11 +59,7 @@ export default{
   },
   async mounted(){
     await this.refreshOrderList();
-    /*await store.router.getOrderList();
-    this.orders = store.state.orderList;
-    if(this.orders == ""){
-      this.carAir = true;
-    }*/
+
   },
 }
 </script>
