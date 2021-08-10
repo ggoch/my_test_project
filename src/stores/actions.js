@@ -100,8 +100,7 @@ export const orderList = async ({commit}) => {
 }
 
 //刪除訂單
-export const deleteOrder = async ({commit},data) => {
-    alert("test");
+export const deleteOneOrder = async ({commit},data) => {
     let result = await apiDeleteOrder(data).then(res => res.data.result).catch(function(err){
         if(err){
             console.log(err);
@@ -112,8 +111,7 @@ export const deleteOrder = async ({commit},data) => {
 }
 
 //修改商品數量
-export const updateOrder = async ({commit},data) => {
-    alert("test");
+export const updateOneOrder = async ({commit},data) => {
     let result = await apiPutOrder(data).then(res => res.data.result).catch(function(err){
         if(err){
             console.log(err);
@@ -124,7 +122,7 @@ export const updateOrder = async ({commit},data) => {
 }
 
 //完成訂單
-export const completeOrder = async ({commit},data) => {
+export const completeOneOrder = async ({commit},data) => {
     let result = await apiPutCompleteOrder(data).then(res => res.data.result.status).catch(function(err){
         if(err){
             console.log(err);
