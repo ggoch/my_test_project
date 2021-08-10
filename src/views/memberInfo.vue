@@ -3,7 +3,7 @@
   <div class="container">
     <div class="info">
       <div class="info-header">
-        <h3>{{name}}  會員您好</h3>
+        <h3>{{memberInfo.name}}  會員您好</h3>
       </div>
       <div class="info-status">    
         <p>信用值 <span>{{credit}}%</span></p>
@@ -33,7 +33,7 @@
 
 <script>
 import {store} from '../store.js'
-import {mapGetters} from 'vuex'
+import {mapGetters,mapActions} from 'vuex'
 
 export default{
     data(){
@@ -46,15 +46,19 @@ export default{
     },
     computed:{
         ...mapGetters({
-            name:'getMemberInfo'
+            memberInfo:'getMemberInfo'
         })
     },
     methods:{
+        ...mapActions([
+            'checkLogin'
+        ]),
         makeActive(item){
             this.active = item;
         }
     },
     async mounted(){
+        await this.checkLogin();
         /*await store.router.checkLogin();
         this.name = store.state.memberInfo.name;*/
     },

@@ -9,6 +9,7 @@ export const getOrderList = state => { return state.data.orderList; }; //未完�
 export const getOrderDeleteStatus = state => { return state.status.order.delete; }; //刪除訂單狀態
 export const getOrderUpdateStatus = state => { return state.status.order.update; }; //更新訂單狀態
 export const getOrderCompleteStatus = state => { return state.status.order.complete; }; //完成訂單狀態
+export const getCompleteOrderList = state => { return state.data.completeOrderList; }; //已完成訂單資料
 
 
 
@@ -18,6 +19,3 @@ export const getOrderCompleteStatus = state => { return state.status.order.compl
 
 
 
-
-//測試
-export const getCount = state => { return state.count }

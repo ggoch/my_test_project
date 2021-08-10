@@ -10,3 +10,4 @@ export const GETORDERLIST = "GETORDERLIST"; //獲取未完成訂單資料
 export const DELETEORDER = "DELETEORDER"; //刪除訂單
 export const UPDATEORDER = "UPDATEORDER"; //更新訂單
 export const COMPLETEORDER = "COMPLETEORDER"; //完成訂單 
+export const GETCOMPLETEORDERLIST = "GETCOMPLETEORDERLIST"; //獲取已完成訂單資料

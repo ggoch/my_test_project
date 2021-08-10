@@ -26,19 +26,29 @@
 <script>
 import completeOrder from '../../components/completeOrder.vue';
 import {store} from '../../store.js';
+import {mapGetters,mapActions} from 'vuex'
 
 export default{
   data(){
     return{
-      completeOrders:store.state.completeOrderList,
+      //completeOrders:store.state.completeOrderList,
       carAir:false
     }
   },
+  computed:{
+    ...mapGetters({
+      completeOrders:'getCompleteOrderList'
+    })
+  },
   methods:{
+    ...mapActions([
+      'completeOrderList'
+    ]),
     async refreshOrderList(){
-      await store.router.getCompleteOrderList();
-      this.completeOrders = store.state.completeOrderList;
-      if(this.orders == ""){
+      /*await store.router.getCompleteOrderList();
+      this.completeOrders = store.state.completeOrderList;*/
+      await this.completeOrderList();
+      if(this.completeOrders == ""){
         this.carAir = true;
       }
       this.$forceUpdate();

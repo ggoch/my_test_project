@@ -5,6 +5,7 @@ export const state = {
         homeCommodity:[],                   //同上
         memberInfo:'',                      //memberInfo物件內容name,account,email
         orderList:[],                       //order物件內容orderID,productID,name,imgurl,totel,number,price
+        completeOrderList:[],
     },
     status:{
         login:'登入失敗',

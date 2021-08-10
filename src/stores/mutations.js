@@ -1,5 +1,7 @@
 import * as types from './mutations_type.js'
 
+const moment = require('moment');  //改變時間顯示的外部套件
+
 export const mutations = {
   [types.LOGIN](state,status){
       state.status.login = status;
@@ -127,5 +129,26 @@ export const mutations = {
   },
   [types.COMPLETEORDER](state,result){
     state.status.order.complete = result;
+  },
+  [types.GETCOMPLETEORDERLIST](state,result){
+    let list=[];
+    for(let i=0;i<result.length;i++){
+        if(result[i].is_complete == 0){
+            continue;
+        }
+        let time = moment(result[i].complete_time).format('YYYY-MM-DD HH:mm:ss');
+
+        list.push({
+            orderID:result[i].order_id,
+            productID:result[i].product_id,
+            name:result[i].product_name,
+            imgurl:result[i].product_img,
+            totel:result[i].order_price,
+            number:result[i].order_quantity,
+            price:result[i].order_price / result[i].order_quantity,
+            time:time
+        });
+    }
+    state.data.completeOrderList = list;
   },
 }
