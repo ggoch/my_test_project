@@ -3,14 +3,14 @@
     <div class="container">
       <div class="closeUP">
         <div class="closeUP-img">
-          <img :src="imgurl" />
+          <img :src="product.img" />
         </div>
         <div class="main">
-          <h2>{{name}}</h2>
+          <h2>{{product.remark}}</h2>
           <div class="productStatus">
             <dl>
               <dt>商品價格 :</dt>
-                <dd>{{price}} 元</dd>
+                <dd>{{product.price}} 元</dd>
             </dl>
             <dl>    
               <dt>上架日期 :</dt>
@@ -18,7 +18,7 @@
             </dl>
             <dl>
               <dt>剩餘數量 :</dt>
-                <dd>{{number}}</dd>
+                <dd>{{product.quantity}}</dd>
             </dl>
             <dl>
               <dt>付款方式 :</dt>
@@ -70,6 +70,7 @@
 
 <script>
 import {store} from '../store.js';
+import {mapGetters,mapActions} from 'vuex'
 
 export default{
     data(){
@@ -86,7 +87,17 @@ export default{
             //productData:'',
         }
     },
+    computed:{
+      ...mapGetters({
+        orderStatus:'getOrderStatus',
+        product:'getOneProduct'
+      })
+    },
     methods:{
+      ...mapActions([
+        'addOrder',
+        'showOneProduct'
+      ]),
       addNumber(){
         if(this.number > this.productNumber)
         this.productNumber+=1;
@@ -104,14 +115,15 @@ export default{
         //this.productData = data
       },
       async productAddCar(){
-        let productID = String(this.productID);
+        let productID = String(this.product.id);
         let quantity = String(this.productNumber);
         let data = {
           productID:productID,
           quantity:quantity
         }
-        await store.router.addOrder(data);
-        if(store.status.addOrderStatus !== "訂單建立成功"){
+        await this.addOrder(data);
+        //await store.router.addOrder(data);
+        if(this.orderStatus.add !== "訂單建立成功"){
           alert("購物車添加失敗,請稍後再試");
         }else{
           alert("購物車添加成功");
@@ -127,8 +139,9 @@ export default{
         localStorage.removeItem("productID");
       }
       let data = {productID:sessionStorage.getItem("productID")};
-      let productData = await store.router.showOneProduct(data);
-      this.updateData(productData);
+      await this.showOneProduct(data);
+      /*let productData = await store.router.showOneProduct(data);
+      this.updateData(productData);*/
     },
 }
 </script>

@@ -155,5 +155,38 @@ export const updateMemberInfo = async ({commit},data) => {
     commit(types.UPDATEMEMBER,result);
 }
 
+//顯示特定種類商品
+export const showProductOneType = async ({commit},datas) => {
+    let data = await apiPostProductType(datas).then(res => res.data.result).catch(function(err){
+        if(err){
+            return console.log(err);
+        }
+    });
+
+    commit(types.SHOWPRODUCTONETYPE,data);
+}
+
+//將商品添加至購物車
+export const addOrder = async ({commit},data) => {
+    let result = await apiPostOrder(data).then(res => res.data.result).catch(function(err){
+        if(err){
+            console.log(err);
+        }
+    });
+
+    commit(types.ADDORDER,result);
+}
+
+//顯示單一商品
+export const showOneProduct = async ({commit},data) => {
+    let result = await apiPostOneProduct(data).then(res => res.data.result[0]).catch(function(err){
+        if(err){
+            return console.log(err);
+        }
+    });
+
+    commit(types.SHOWONEPRODUCT,result);
+}
+
 
 

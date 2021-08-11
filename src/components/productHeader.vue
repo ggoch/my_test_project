@@ -41,6 +41,7 @@
 
 <script>
 import {store} from '../store.js';
+import {mapActions,mapGetters} from 'vuex'
 
 export default{
     data(){
@@ -48,11 +49,15 @@ export default{
         }
     },
     methods:{
+      ...mapActions([
+        'showProductOneType'
+      ]),
       async showType(type){
         let data = {
           productType:type
         };
-        await store.router.showProductType(data);
+        await this.showProductOneType(data);
+        //await store.router.showProductType(data);
         this.$emit('updateProduct');
         if(this.$route.path == '/product'){
         this.$router.replace({path:'/supplierAllBack'})

@@ -47,7 +47,8 @@ export default {
       'resetSearchStatus'
     ]),
     updateProduct(){
-      store.state.searchProductList = store.state.homeCommodity;
+      /*alert("test");
+      store.state.searchProductList = store.state.homeCommodity;*/
     }
   },
   components:{

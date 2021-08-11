@@ -9,6 +9,7 @@ export const getOrderList = state => { return state.data.orderList; }; //未完�
 export const getCompleteOrderList = state => { return state.data.completeOrderList; }; //已完成訂單資料
 export const getMemberStatus = state => { return state.status.member; }; //會員資料狀態
 export const getOrderStatus = state => { return state.status.order; };  //訂單狀態
+export const getOneProduct = state => { return state.data.oneProduct; }; //獲取單一商品
 
 
 

@@ -88,7 +88,7 @@ export const mutations = {
     }
   },
   [types.RESETSEARCHSTATUS](state){
-    state.status.searchStatus = "";
+    state.status.searchResult = "";
   },
   [types.CHECKLOGIN](state,result){
     if(result.status == "token錯誤"){
@@ -154,5 +154,29 @@ export const mutations = {
   [types.UPDATEMEMBER](state,result){
     state.data.memberInfo.name = result.memberUpdateData.name;
     state.status.member.update = result.status;
+  },
+  [types.SHOWPRODUCTONETYPE](state,data){
+    let commodity = [];
+    for(let i=0;i<data.length;i++){
+        commodity.push(
+            {
+                id:data[i].id,
+                name:data[i].name,
+                imgurl:data[i].img,
+                price:data[i].price,
+                number:data[i].quantity,
+                narrate:data[i].remark,
+                time:data[i].create_date
+            }
+        );
+    }
+    state.data.commodity = commodity;
+    state.status.searchResult = "searchSuccess";
+  },
+  [types.ADDORDER](state,result){
+    state.status.order.add = result.status;
+  },
+  [types.SHOWONEPRODUCT](state,result){
+    state.data.oneProduct = result;
   },
 }

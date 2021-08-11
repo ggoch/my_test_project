@@ -6,6 +6,7 @@ export const state = {
         memberInfo:'',                      //memberInfo物件內容name,account,email
         orderList:[],                       //order物件內容orderID,productID,name,imgurl,totel,number,price
         completeOrderList:[],               //同上
+        oneProduct:'',                      //oneProduct物件內容remark,img,price,quantity,id
     },
     status:{
         login:'登入失敗',
@@ -20,7 +21,8 @@ export const state = {
         order:{
             delete:'',
             update:'',
-            complete:''
+            complete:'',
+            add:''
         },
         member:{
             update:''
