@@ -144,4 +144,16 @@ export const completeOrderList = async ({commit},data) => {
 }
 
 
+//修改會員資料
+export const updateMemberInfo = async ({commit},data) => {
+    let result = await apiPutMember(data).then(res => res.data.result).catch(function(err){
+        if(err){
+            return console.log(err);
+        }
+    });
+
+    commit(types.UPDATEMEMBER,result);
+}
+
+
 

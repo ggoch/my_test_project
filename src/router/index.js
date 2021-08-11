@@ -75,6 +75,7 @@ const routes = [
       if(store.status.loginStatus == "登入成功"){
         next();
       }else{
+        alert("請重新登入");
         next('/');
       }
     },

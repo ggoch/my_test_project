@@ -31,9 +31,7 @@ export default{
     },
     computed:{
         ...mapGetters({
-            deleteOrderStatus:'getOrderDeleteStatus',
-            updateOrderStatus:'getOrderUpdateStatus',
-            completeOrderStatus:'getOrderCompleteStatus'
+            orderStatus:'getOrderStatus'
         })
     },
     methods:{
@@ -50,8 +48,8 @@ export default{
                 orderID:orderID
             };
             await this.deleteOneOrder(data);
-            if(this.deleteOrderStatus !== '刪除資料成功'){
-                alert(this.deleteOrderStatus);
+            if(this.orderStatus.delete !== '刪除資料成功'){
+                alert(this.orderStatus.delete);
                 alert("資料刪除失敗,請稍後重試");
             }
             this.$emit('refresh');
@@ -65,7 +63,7 @@ export default{
 
             //await store.router.updateOrder(data);
             await this.updateOneOrder(data);
-            if(this.updateOrderStatus !== "更新訂單資料成功"){
+            if(this.orderStatus.update !== "更新訂單資料成功"){
                 alert("商品數量更改失敗,請稍後再試");
             }else{
                 this.$emit('refresh');
@@ -77,7 +75,7 @@ export default{
             };
             await this.completeOneOrder(data);
             //await store.router.completeOrder(data);
-            alert(this.completeOrderStatus);
+            alert(this.orderStatus.complete);
             this.$emit('refresh');
         },    
     },

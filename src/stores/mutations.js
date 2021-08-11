@@ -151,4 +151,8 @@ export const mutations = {
     }
     state.data.completeOrderList = list;
   },
+  [types.UPDATEMEMBER](state,result){
+    state.data.memberInfo.name = result.memberUpdateData.name;
+    state.status.member.update = result.status;
+  },
 }

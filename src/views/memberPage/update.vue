@@ -11,9 +11,9 @@
            <p>電子郵件</p>
          </div>
          <div>
-           <p>{{memberName}}</p>
-           <p>{{memberAccount}}</p>
-           <p>{{memberEmail}}</p>
+           <p>{{memberInfo.name}}</p>
+           <p>{{memberInfo.account}}</p>
+           <p>{{memberInfo.email}}</p>
          </div>       
        </div>
       </div>
@@ -46,77 +46,88 @@
 
 <script>
 import {store} from '../../store.js';
+import {mapGetters,mapActions} from 'vuex';
 
 export default{
-    data(){
-        return{
-            memberName:'',
-            memberAccount:'',
-            memberEmail:'',
-            name:'',
-            password:'',
-            preview: null,
-            image: null,
+  data(){
+    return{
+        memberName:'',
+        memberAccount:'',
+        memberEmail:'',
+        name:'',
+        password:'',
+        preview: null,
+        image: null,
+    }
+  },
+  computed:{
+    ...mapGetters({
+      memberStatus:'getMemberStatus',
+      memberInfo:'getMemberInfo'
+    })
+  },
+  methods:{
+    ...mapActions([
+      'updateMemberInfo',
+    ]),
+    async update(){
+        let name = store.methods.xssCheck(this.name);
+        let password = store.methods.xssCheck(this.password);
+        let checkResult = this.checkUpdate([name,password]);
+
+
+        if(checkResult == "error"){
+          alert("資料未完整輸入");
+          return;
+        }
+
+        let data = {
+            name:name,
+            password:password
+        };
+        
+        await this.updateMemberInfo(data);
+        //store.status.updateStatus = await store.router.update(data);
+        if(this.memberStatus.update == "會員資料更新成功"){
+            alert("會員資料更新成功"); 
+            /*this.memberName = store.state.updateMember.name;
+            this.name = '';
+            this.password = '';*/
+        }else{
+            alert("會員資料更新失敗,請重新登入");
         }
     },
-    methods:{
-        async update(){
-            let name = store.methods.xssCheck(this.name);
-            let password = store.methods.xssCheck(this.password);
-            let checkResult = this.checkUpdate([name,password]);
-
-
-            if(checkResult == "error"){
-              alert("資料未完整輸入");
-              return;
-            }
-
-            let data = {
-                name:name,
-                password:password
-            };
-            
-
-            store.status.updateStatus = await store.router.update(data);
-            if(store.status.updateStatus == "會員資料更新成功"){
-                alert("會員資料更新成功"); 
-                this.memberName = store.state.updateMember.name;
-                this.name = '';
-                this.password = '';
-            }else{
-                alert("會員資料更新失敗,請重新登入");
-            }
-        },
-        previewImage: function(event) {
-         var input = event.target;
-         if (input.files) {
-           var reader = new FileReader();
-           reader.onload = (e) => {
-             this.preview = e.target.result;
-           }
-           this.image=input.files[0];
-           reader.readAsDataURL(input.files[0]);
-         }
-        },
-        checkUpdate(dataArr){
-           for(let i=0;i<dataArr.length;i++){
-             if(dataArr[i] == ""){
-              return "error";
-             }
-           }
-         }
+    previewImage: function(event) {
+     var input = event.target;
+     if (input.files) {
+       var reader = new FileReader();
+       reader.onload = (e) => {
+         this.preview = e.target.result;
+       }
+       this.image=input.files[0];
+       reader.readAsDataURL(input.files[0]);
+     }
     },
-    async mounted(){
-      await store.router.checkLogin();
-      if(store.status.loginStatus !== "登入成功"){
-        alert("登入失敗,請重新登入");
-      }else{
-        let memberData = store.state.memberInfo;
-        this.memberName = memberData.name;
-        this.memberAccount = memberData.account;
-        this.memberEmail = memberData.email;
-      }
-    }
+    checkUpdate(dataArr){
+       for(let i=0;i<dataArr.length;i++){
+         if(dataArr[i] == ""){
+          return "error";
+         }
+       }
+     }
+  },
+  async mounted(){
+    //await this.checkLogin();
+    //await store.router.checkLogin();
+    /*if(store.status.loginStatus !== "登入成功"){
+      alert("登入失敗,請重新登入");
+    }else{
+      let memberData = store.state.memberInfo;
+      this.memberName = memberData.name;
+      this.memberAccount = memberData.account;
+      this.memberEmail = memberData.email;
+    }*/
+  }
 }
 </script>
 
