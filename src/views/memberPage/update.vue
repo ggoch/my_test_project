@@ -51,9 +51,6 @@ import {mapGetters,mapActions} from 'vuex';
 export default{
   data(){
     return{
-        memberName:'',
-        memberAccount:'',
-        memberEmail:'',
         name:'',
         password:'',
         preview: null,
@@ -87,11 +84,9 @@ export default{
         };
         
         await this.updateMemberInfo(data);
-        //store.status.updateStatus = await store.router.update(data);
         if(this.memberStatus.update == "會員資料更新成功"){
             alert("會員資料更新成功"); 
-            /*this.memberName = store.state.updateMember.name;
-            this.name = '';
+            /*this.name = '';
             this.password = '';*/
         }else{
             alert("會員資料更新失敗,請重新登入");
@@ -116,17 +111,7 @@ export default{
        }
      }
   },
-  async mounted(){
-    //await this.checkLogin();
-    //await store.router.checkLogin();
-    /*if(store.status.loginStatus !== "登入成功"){
-      alert("登入失敗,請重新登入");
-    }else{
-      let memberData = store.state.memberInfo;
-      this.memberName = memberData.name;
-      this.memberAccount = memberData.account;
-      this.memberEmail = memberData.email;
-    }*/
+  mounted(){
   }
 }
 </script>

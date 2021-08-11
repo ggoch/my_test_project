@@ -18,7 +18,6 @@ export default{
     methods:{
         checkID(){
             localStorage.setItem("productID", this.id);
-            //alert(store.state.id);
         }
     },
     props:{

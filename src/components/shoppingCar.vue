@@ -47,6 +47,7 @@ export default{
                 productID:productID,
                 orderID:orderID
             };
+            
             await this.deleteOneOrder(data);
             if(this.orderStatus.delete !== '刪除資料成功'){
                 alert(this.orderStatus.delete);
@@ -61,7 +62,6 @@ export default{
                 orderID:this.orderList.orderID
             };
 
-            //await store.router.updateOrder(data);
             await this.updateOneOrder(data);
             if(this.orderStatus.update !== "更新訂單資料成功"){
                 alert("商品數量更改失敗,請稍後再試");
@@ -73,8 +73,8 @@ export default{
             let data = {
                 orderID:this.orderList.orderID
             };
+
             await this.completeOneOrder(data);
-            //await store.router.completeOrder(data);
             alert(this.orderStatus.complete);
             this.$emit('refresh');
         },    

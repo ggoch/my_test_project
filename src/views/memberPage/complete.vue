@@ -31,7 +31,6 @@ import {mapGetters,mapActions} from 'vuex'
 export default{
   data(){
     return{
-      //completeOrders:store.state.completeOrderList,
       carAir:false
     }
   },
@@ -45,8 +44,6 @@ export default{
       'completeOrderList'
     ]),
     async refreshOrderList(){
-      /*await store.router.getCompleteOrderList();
-      this.completeOrders = store.state.completeOrderList;*/
       await this.completeOrderList();
       if(this.completeOrders == ""){
         this.carAir = true;
@@ -59,11 +56,6 @@ export default{
   },
   async mounted(){
     await this.refreshOrderList();
-    /*await store.router.getOrderList();
-    this.orders = store.state.orderList;
-    if(this.orders == ""){
-      this.carAir = true;
-    }*/
   },
 }
 </script>

@@ -83,7 +83,6 @@ export default{
             email:email
           };
           this.registor(data);
-          //store.status.registorStatus = await store.router.registor(data);
           this.$router.push({path:'/sign_up/signup_result'});
       }
     },

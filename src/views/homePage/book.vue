@@ -15,7 +15,6 @@ import {mapGetters,mapActions} from 'vuex'
 export default{
     data(){
         return{
-            //commoditys:store.state.homeCommodity
         }
     },
     computed:{
@@ -34,8 +33,6 @@ export default{
     async mounted(){
       let data = {productType:'book'}
       this.showProductType(data);  
-      /*await store.router.showProductType(data,10);
-      this.commoditys = store.state.homeCommodity*/
     }
 }
 </script>

@@ -63,7 +63,6 @@ export default{
         email:email
       };
       await this.login(data);
-      //store.status.loginStatus = await store.router.login(data);
       if(this.loginStatus == '登入成功'){
         this.$router.push({path:'/'});
       }else{

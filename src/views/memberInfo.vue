@@ -38,7 +38,6 @@ import {mapGetters,mapActions} from 'vuex'
 export default{
     data(){
         return{
-            //name:store.state.memberInfo.name,
             credit:100,
             Balance:0,
             active:'shoppingCar'
@@ -59,8 +58,6 @@ export default{
     },
     async mounted(){
         await this.checkLogin();
-        /*await store.router.checkLogin();
-        this.name = store.state.memberInfo.name;*/
     },
 }
 </script>

@@ -76,15 +76,10 @@ export default{
     data(){
         return{
             imgurl:store.state.test.imgurl,
-            name:store.state.test.name,
             time:store.state.test.time,
-            price:store.state.test.price,
-            number:store.state.test.number,
             pays:store.state.test.pay,
             pretest:store.state.pretest,
             productNumber:1,
-            productID:'',
-            //productData:'',
         }
     },
     computed:{
@@ -106,14 +101,6 @@ export default{
         if(this.productNumber > 1)
         this.productNumber-=1;
       },
-      updateData(data){
-        this.name = data.remark;
-        this.imgurl = data.img;
-        this.price = data.price;
-        this.number = data.quantity;
-        this.productID = data.id;
-        //this.productData = data
-      },
       async productAddCar(){
         let productID = String(this.product.id);
         let quantity = String(this.productNumber);
@@ -122,7 +109,6 @@ export default{
           quantity:quantity
         }
         await this.addOrder(data);
-        //await store.router.addOrder(data);
         if(this.orderStatus.add !== "訂單建立成功"){
           alert("購物車添加失敗,請稍後再試");
         }else{
@@ -140,8 +126,6 @@ export default{
       }
       let data = {productID:sessionStorage.getItem("productID")};
       await this.showOneProduct(data);
-      /*let productData = await store.router.showOneProduct(data);
-      this.updateData(productData);*/
     },
 }
 </script>

@@ -15,9 +15,6 @@ import {mapGetters} from 'vuex'
 export default{
     data(){
         return{
-            status:'',
-            registerMember:'',
-            err:''
         }
     },
     computed:{
@@ -26,12 +23,6 @@ export default{
         })
     },
     created(){
-        /*this.status = store.status.registorStatus.status;
-        if(this.status === '註冊失敗'){
-            this.err= store.status.registorStatus.err;
-        }else if(this.status === '註冊成功'){
-            this.registerMember = store.status.registorStatus.registerMember;
-        }*/
     },
     mounted(){
         setTimeout(() => {this.$router.push({path:'/'})},1000 * 10);

@@ -20,7 +20,6 @@ import {mapGetters,mapActions} from 'vuex'
 export default{
     data(){
         return{
-            //commoditys:store.state.homeCommodity
         }
     },
     computed:{

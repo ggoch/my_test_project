@@ -57,7 +57,6 @@ export default{
           productType:type
         };
         await this.showProductOneType(data);
-        //await store.router.showProductType(data);
         this.$emit('updateProduct');
         if(this.$route.path == '/product'){
         this.$router.replace({path:'/supplierAllBack'})

@@ -27,7 +27,6 @@ import {mapGetters,mapActions} from 'vuex';
 export default{
     data(){
         return{
-            //commoditys:store.state.commodity,
             productHeader:store.state.recommend
         }
     },
@@ -50,8 +49,6 @@ export default{
     },
     async mounted(){
       this.showNewProduct();
-      /*await store.router.showNewProduct();
-      this.commoditys = store.state.commodity*/
     }
 }
 </script>

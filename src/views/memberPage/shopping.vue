@@ -31,7 +31,6 @@ import {mapGetters,mapActions} from 'vuex';
 export default{
   data(){
     return{
-      //orders:store.state.orderList,
       carAir:false
     }
   },
@@ -46,8 +45,6 @@ export default{
     ]),
     async refreshOrderList(){
       await this.orderList();
-      /*await store.router.getOrderList();
-      this.orders = store.state.orderList;*/
       if(this.orders == ""){
         this.carAir = true;
       }

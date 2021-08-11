@@ -29,7 +29,6 @@ import { mapGetters,mapActions} from 'vuex';
 export default {
   data(){
     return{
-      
       productHeader:store.state.recommend,
       air:false
     }
@@ -47,8 +46,7 @@ export default {
       'resetSearchStatus'
     ]),
     updateProduct(){
-      /*alert("test");
-      store.state.searchProductList = store.state.homeCommodity;*/
+      //alert("test");
     }
   },
   components:{
