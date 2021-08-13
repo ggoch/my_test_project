@@ -136,7 +136,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 *{
   margin:0;
   padding:0;
@@ -147,46 +147,7 @@ export default {
 html,body{
   height:auto;
 }
-.heaterTitle{                       
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  padding:30px 20px 30px 20px;
-  //background:yellow;
-}
-.heaterTitle .search .form{            /*搜尋框區塊*/
-  border-radius:4px;
-  width:500px;
-  display:flex;
-  box-shadow:2px 2px 3px #888888;
-  //background:yellow;
-  //border:5px solid red;
-}
-.heaterTitle .search img{
-  display:none;
-}
-.heaterTitle .search input{
-  padding:7px;
-}
-.heaterTitle .search .text{          /*搜尋框*/
-  border:1px solid #000;
-  border-right:0px;
-  width:75%;
-  font-size:16px;
-  border-radius:4px 0 0 4px;
-}
-.heaterTitle .search .submit{         /*搜尋按鈕*/
-  border:1px solid #000;
-  border-left:0px;
-  width:25%;
-  font-size:18px;
-  border-radius:0 4px 4px 0;
-  cursor:pointer;
-  transition:0.5s;
-}
-.heaterTitle .search .submit:hover{
-  background:#BEBEBE;
-}
+
 @media screen and (min-width:550px) and (max-width:800px){  /*搜尋框rwd練習區*/
   .heaterTitle .search .form{
     width:350px;
@@ -209,33 +170,78 @@ html,body{
     font-size:10px;
   }
 }
-.heaterTitle .login{       /*登入和註冊區塊*/
-  width:200px;
+
+.heaterTitle{
   display:flex;
-}
-.heaterTitle .login a{         /*按鈕樣式*/
-  padding:7px;
-  width:50%;
-  text-align:center;
-  font-size:16px;
-  font-weight:bold;
-  //border:1px solid #000;
-  border-radius:4px;
-  color:#fff;
-  cursor:pointer;
-  transition:0.4s;
-}
-.heaterTitle .login a:first-child{
-  margin-right:20px;
-  background:green;
-}
-.heaterTitle .login a:last-child{
-  background:#000;
-}
-.heaterTitle .login a:hover{
-  background:#0080FF;
-  //color:#000;
-  box-shadow: 2px 2px 2px #ADADAD;
+  justify-content:space-around;
+  align-items:center;
+  padding:30px 20px 30px 20px;
+
+  .search{
+    .form{
+      border-radius:4px;
+      width:500px;
+      display:flex;
+      box-shadow:2px 2px 3px #888888;
+    }
+    img{
+      display:none;
+    }
+    input{
+      padding:7px;
+    }
+    .text{
+      border:1px solid #000;
+      border-right:0px;
+      width:75%;
+      font-size:16px;
+      border-radius:4px 0 0 4px;
+    }
+    .submit{
+      border:1px solid #000;
+      border-left:0px;
+      width:25%;
+      font-size:18px;
+      border-radius:0 4px 4px 0;
+      cursor:pointer;
+      transition:0.5s;
+
+      &:hover{
+        background:#BEBEBE;
+      }
+    }
+  }
+
+  .login{
+    width:200px;
+    display:flex;
+
+    a{
+      padding:7px;
+      width:50%;
+      text-align:center;
+      font-size:16px;
+      font-weight:bold;
+      //border:1px solid #000;
+      border-radius:4px;
+      color:#fff;
+      cursor:pointer;
+      transition:0.4s;
+
+      &:first-child{
+        margin-right:20px;
+        background:green;
+      }
+      &:last-child{
+        background:#000;
+      }
+      &:hover{
+        background:#0080FF;
+        //color:#000;
+        box-shadow: 2px 2px 2px #ADADAD;
+      }
+    }
+  }
 }
 @media screen and (min-width:550px) and (max-width:800px){   /*登入區塊rwd*/
   .heaterTitle .login{
