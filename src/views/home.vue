@@ -7,7 +7,7 @@
               <li><a href="#"><img src="../assets/sideshow1.jpg" alt="" /></a></li>
               <li><a href="#"><img src="../assets/sideshow2.jpg" alt="" /></a></li>
               <li><a href="#"><img src="../assets/sideshow3.jpg" alt="" /></a></li>
-              <img href="#"><img src="../assets/sideshow1.jpg" alt="" />
+              <img class="rwdimg" src="../assets/sideshow1.jpg" alt="" />
             </ul>
           </div>
           <div class = "category">
@@ -49,9 +49,8 @@ export default{
 }
 
 </script>
-<style>
-.main-header{}
-.main-header .sideshow{     /*首頁幻燈片區塊*/
+<style lang="scss">
+.main-header .sideshow{     //首頁幻燈片區塊
     width:100%;
     display:flex;
     justify-content:center;
@@ -111,6 +110,56 @@ export default{
 .main-header .sideshow li:nth-child(3){
     animation-delay:10s;
 }
+/*.main-header{
+    .sideshow{
+        width:100%;
+        display:flex;
+        justify-content:center;
+        //background:green;
+
+        ul{
+            width:620px;
+            height:320px;
+            display:flex;
+            //background:blue;
+            position:relative;
+
+            .rwdimg{
+                width:100%;
+                height:100%;
+                visibility:hidden;
+            }
+
+            li{
+                position:absolute;
+                top:0;
+                left:0;
+                opacity:0;
+                max-width:620px;
+                max-height:320px;
+                width:100%;
+                height:100%;
+                filter:alpha(opacity=0);
+                animation:silder 15s linear infinite;
+
+                img{
+                    width:100%;
+                    height:100%;
+                }
+
+                &:nth-child(1){
+                    animation-delay:0s;
+                }
+                &:nth-child(2){
+                    animation-delay:5s;
+                }
+                &:nth-child(3){
+                    animation-delay:10s;
+                }
+            }
+        }
+    }
+}*/
 @media(max-width:420px){       /*幻燈片rwd*/
     .sideshow ul{
       width:100%;
@@ -119,8 +168,23 @@ export default{
     }
     .sideshow li img{
       object-fit:cover;
-      width:100%;
+      //width:100%;
     }
+
+    /*.sideshow{
+        ul{
+            width:100%;
+            height:auto;
+            font-size:0;
+
+            li{
+                img{
+                    object-fit:cover;
+                    //width:100%;
+                }
+            }
+        }
+    }*/
 }
 .category{
     background:#0072E3;
@@ -185,7 +249,6 @@ ul.book .book{
     display:flex;
     justify-content:center;
     background:#ACD6FF;
-    //padding:20px 0;
     padding:20px 0;
 }
 </style>

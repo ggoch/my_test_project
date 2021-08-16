@@ -220,52 +220,61 @@ html,body{
   }
 }
 @media screen and (min-width:550px) and (max-width:800px){  /*搜尋框rwd練習區*/
-  .heaterTitle .search .form{
-    width:350px;
-  }
-  .heaterTitle .search .text{
-    font-size:12px;
-  }
-  .heaterTitle .search .submit{
-    font-size:14px;
+  .heaterTitle{
+    .search{
+      .form{
+        width:350px;
+      }
+      .text{
+        font-size:12px;
+      }
+      .submit{
+        font-size:14px;
+      }
+    }
+
+    .login{
+      width:150px;
+
+      a{
+        width:50%;
+        font-size:14spx;
+        padding:6px 0;
+      }
+    }
   }
 }
 @media(max-width:550px){
-  .heaterTitle .search .form{
-    width:165px;
-  }
-  .heaterTitle .search .text{
-    font-size:8px;
-  }
-  .heaterTitle .search .submit{
-    font-size:10px;
+  .heaterTitle{
+    .search{
+      .form{
+        width:165px;
+      }
+      .text{
+        font-size:8px;
+      }
+      .submit{
+        font-size:10px;
+      }
+    }
+    
+    .login{
+      width:100px;
+      flex-flow:column;
+
+      a{
+        width:100%;
+        font-size:10px;
+        padding:6px 0;
+
+        &:first-child{
+          margin-bottom:10px;
+        }
+      }
+    }
   }
 }
 
-@media screen and (min-width:550px) and (max-width:800px){   /*登入區塊rwd*/
-  .heaterTitle .login{
-    width:150px;
-  }
-  .heaterTitle .login a{
-    width:50%;
-    font-size:14spx;
-    padding:6px 0;
-  }
-}
-@media(max-width:550px){
-  .heaterTitle .login{
-    width:100px;
-    flex-flow:column;
-  }
-  .heaterTitle .login a{
-    width:100%;
-    font-size:10px;
-    padding:6px 0;
-  }
-  .heaterTitle .login a:first-child{
-    margin-bottom:10px;
-  }
-}
 .nav{                               //導航區塊
   background:#0072E3;
   padding-left:100px;
@@ -274,6 +283,7 @@ html,body{
   .menu{
     display:none;
   }
+
   ul{
     display:flex;
 
@@ -299,30 +309,39 @@ html,body{
   .nav{
     position:relative;
     padding-left:20px;
-  }
-  .nav .menu{
-    padding:10px;
-    display:flex;
-    align-item:center;
-  }
-  .nav .menu img:hover{
-    cursor:pointer;
-  }
-  .nav input:checked ~ ul{
-    transform:translateX(0);
-  }
-  .nav ul{
-    flex-flow:column;
-    position:absolute;
-    top:50px;
-    left:-20px;
-    z-index:1;
-    transform:translateX(-100%);
-    transition:0.3s;
-  }
-  .nav li a{
-    font-size:14px;
-    background:#0072E3;
+
+    .menu{
+      padding:10px;
+      display:flex;
+      align-item:center;
+
+      img{
+        &:hover{
+          cursor:pointer;
+        }
+      }
+    }
+
+    input{
+      &:checked ~ ul{
+        transform:translateX(0);
+      }
+    }
+    ul{
+      flex-flow:column;
+      position:absolute;
+      top:50px;
+      left:-20px;
+      z-index:1;
+      transform:translateX(-100%);
+      transition:0.3s;
+      li{
+        a{
+          font-size:14px;
+          background:#0072E3;
+        }
+      }
+    }
   }
 }
 .footer{                                    //頁腳區塊
