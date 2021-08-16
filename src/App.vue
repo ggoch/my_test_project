@@ -147,37 +147,13 @@ export default {
 html,body{
   height:auto;
 }
-
-@media screen and (min-width:550px) and (max-width:800px){  /*搜尋框rwd練習區*/
-  .heaterTitle .search .form{
-    width:350px;
-  }
-  .heaterTitle .search .text{
-    font-size:12px;
-  }
-  .heaterTitle .search .submit{
-    font-size:14px;
-  }
-}
-@media(max-width:550px){
-  .heaterTitle .search .form{
-    width:165px;
-  }
-  .heaterTitle .search .text{
-    font-size:8px;
-  }
-  .heaterTitle .search .submit{
-    font-size:10px;
-  }
-}
-
 .heaterTitle{
   display:flex;
   justify-content:space-around;
   align-items:center;
   padding:30px 20px 30px 20px;
 
-  .search{
+  .search{                                  //搜尋框
     .form{
       border-radius:4px;
       width:500px;
@@ -212,7 +188,7 @@ html,body{
     }
   }
 
-  .login{
+  .login{                                   //登入按鈕
     width:200px;
     display:flex;
 
@@ -243,6 +219,29 @@ html,body{
     }
   }
 }
+@media screen and (min-width:550px) and (max-width:800px){  /*搜尋框rwd練習區*/
+  .heaterTitle .search .form{
+    width:350px;
+  }
+  .heaterTitle .search .text{
+    font-size:12px;
+  }
+  .heaterTitle .search .submit{
+    font-size:14px;
+  }
+}
+@media(max-width:550px){
+  .heaterTitle .search .form{
+    width:165px;
+  }
+  .heaterTitle .search .text{
+    font-size:8px;
+  }
+  .heaterTitle .search .submit{
+    font-size:10px;
+  }
+}
+
 @media screen and (min-width:550px) and (max-width:800px){   /*登入區塊rwd*/
   .heaterTitle .login{
     width:150px;
@@ -267,30 +266,34 @@ html,body{
     margin-bottom:10px;
   }
 }
-.nav{                          /*導航區塊*/
+.nav{                               //導航區塊
   background:#0072E3;
   padding-left:100px;
-}
-.nav input[type="checkbox"],
-.nav .menu{
-  display:none;
-}
-.nav ul{
-  display:flex;
-}
-.nav li a{
-  color:#fff;
-  font-size:17px;
-  margin:0 20px;
-  display:flex;
-  align-items:center;
-  padding:10px;
-  height:50px;
-  font-weight:bold;
-  transition:0.5s;
-}
-.nav a:hover{
-  background:#46A3FF;
+
+  input[type="checkbox"],
+  .menu{
+    display:none;
+  }
+  ul{
+    display:flex;
+
+    li{
+      a{
+        color:#fff;
+        font-size:17px;
+        margin:0 20px;
+        display:flex;
+        align-items:center;
+        padding:10px;
+        height:50px;
+        font-weight:bold;
+        transition:0.5s;
+        &:hover{
+          background:#46A3FF;
+        }
+      }
+    }
+  }
 }
 @media(max-width:550px){    /*導航區rwd*/
   .nav{
@@ -322,35 +325,44 @@ html,body{
     background:#0072E3;
   }
 }
-.footer{                          /*頁腳區塊*/
-    padding-bottom:100px;
+.footer{                                    //頁腳區塊
+  padding-bottom:100px;
     padding-top:20px;
     background:#C4E1FF;
     border-top:3px solid #BEBEBE;
-}
-.footer-nav ul{
+
+  .footer-nav{
+    ul{
+      display:flex;
+      flex-flow:wrap;
+      justify-content:center;
+      padding:5px;
+
+      li{
+        a{
+          color:#9D9D9D;
+          border-right:1px solid #9D9D9D;
+          padding:0 5px;
+        }
+        &:last-child{
+          a{
+            border:none;
+          }
+        }
+      }
+    }
+  }
+  .footer-content{
     display:flex;
-    flex-flow:wrap;
+    flex-flow:column;
     justify-content:center;
-    padding:5px;
-}
-.footer-nav ul a{
-    color:#9D9D9D;
-    border-right:1px solid #9D9D9D;
-    padding:0 5px;
-}
-.footer-nav ul li:last-child a{
-    border:none;
-}
-.footer-content{
-  display:flex;
-  flex-flow:column;
-  justify-content:center;
-  align-items:center;
-}
-.footer-content p{
-  font-size:16px;
-  margin:10px;
+    align-items:center;
+
+    p{
+      font-size:16px;
+      margin:10px;
+    }
+  }
 }
 div.home .home,
 div.product_new .product_new,
