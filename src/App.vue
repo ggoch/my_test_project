@@ -148,15 +148,18 @@ html,body{
   height:auto;
 }
 .heaterTitle{
+  width:100%;
   display:flex;
   justify-content:space-around;
   align-items:center;
-  padding:30px 20px 30px 20px;
+  padding:30px 0px;
+  margin:auto;
 
   .search{                                  //搜尋框
+    width:50%;
     .form{
       border-radius:4px;
-      width:500px;
+      width:100%;
       display:flex;
       box-shadow:2px 2px 3px #888888;
     }
@@ -177,7 +180,7 @@ html,body{
       border:1px solid #000;
       border-left:0px;
       width:25%;
-      font-size:18px;
+      font-size:16px;
       border-radius:0 4px 4px 0;
       cursor:pointer;
       transition:0.5s;
@@ -189,7 +192,7 @@ html,body{
   }
 
   .login{                                   //登入按鈕
-    width:200px;
+    width:30%;
     display:flex;
 
     a{
@@ -202,7 +205,7 @@ html,body{
       border-radius:4px;
       color:#fff;
       cursor:pointer;
-      transition:0.4s;
+      transition:0.5s;
 
       &:first-child{
         margin-right:20px;
@@ -219,56 +222,39 @@ html,body{
     }
   }
 }
-@media screen and (min-width:550px) and (max-width:800px){  /*搜尋框rwd練習區*/
+@media(min-width:1000px){
   .heaterTitle{
-    .search{
-      .form{
-        width:350px;
-      }
-      .text{
-        font-size:12px;
-      }
-      .submit{
-        font-size:14px;
-      }
-    }
-
+    width:1000px;
+  }
+}
+@media(min-width:768px){
+  .heaterTitle{
     .login{
-      width:150px;
-
-      a{
-        width:50%;
-        font-size:14spx;
-        padding:6px 0;
-      }
+      width:20%;
     }
   }
 }
-@media(max-width:550px){
+@media screen and (min-width:576px) and (max-width:768px){  /*搜尋框rwd練習區*/
+  .heaterTitle{
+  }
+}
+@media(max-width:576px){
   .heaterTitle{
     .search{
-      .form{
-        width:165px;
-      }
       .text{
         font-size:8px;
       }
       .submit{
-        font-size:10px;
+        font-size:8px;
       }
     }
     
     .login{
-      width:100px;
-      flex-flow:column;
-
       a{
-        width:100%;
-        font-size:10px;
-        padding:6px 0;
+        padding:7px 3px;
 
         &:first-child{
-          margin-bottom:10px;
+          margin-right:10px;
         }
       }
     }
