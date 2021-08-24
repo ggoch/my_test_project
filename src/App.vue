@@ -263,7 +263,7 @@ html,body{
 
 .nav{                               //導航區塊
   background:#0072E3;
-  padding-left:100px;
+  padding-left:10%;
 
   input[type="checkbox"],
   .menu{
@@ -276,7 +276,7 @@ html,body{
     li{
       a{
         color:#fff;
-        font-size:17px;
+        font-size:16px;
         margin:0 20px;
         display:flex;
         align-items:center;
@@ -291,7 +291,7 @@ html,body{
     }
   }
 }
-@media(max-width:550px){    /*導航區rwd*/
+@media(max-width:576px){    /*導航區rwd*/
   .nav{
     position:relative;
     padding-left:20px;
@@ -323,7 +323,7 @@ html,body{
       transition:0.3s;
       li{
         a{
-          font-size:14px;
+          font-size:16px;
           background:#0072E3;
         }
       }
@@ -332,9 +332,9 @@ html,body{
 }
 .footer{                                    //頁腳區塊
   padding-bottom:100px;
-    padding-top:20px;
-    background:#C4E1FF;
-    border-top:3px solid #BEBEBE;
+  padding-top:20px;
+  background:#C4E1FF;
+  border-top:3px solid #BEBEBE;
 
   .footer-nav{
     ul{
