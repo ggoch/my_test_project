@@ -1,15 +1,19 @@
 <template>
   <div class="container">
-    <h2>count:<span class="count">{{count}} </span></h2>
-    <button @click="actionIncrease"> + </button>
-    <button @click="actionDecrease"> - </button>
+    <div class="box">
+      <div class="box-in">
+        <div class="content">
+          <p>測試</p>
+        </div>
+        <div class="content">
+          <p>測試</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-// 引用 vuex
-// mapActions 在 computed 中使用，提取 action 函式的方法，使用函式名稱
-// mapGetters 在 methods 中使用，提取 getter 函式的方法，可以利用物件 key: value 方式取別名
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -31,3 +35,27 @@ export default {
   },
 }
 </script>
+<style>
+.box{
+  max-width:1000px;
+  width:100%;
+  padding-top:34.5%;
+  position:relative;
+  background:red;
+  margin:auto;
+}
+.box-in{
+  width:inherit;  
+  position:absolute;
+  top:50%;
+  bottom:50%;
+  left:0;
+  display:flex;
+  justify-content:center;
+  background:green;
+}
+.content{
+  background:green;
+  border:1x solid red;
+}
+</style>
