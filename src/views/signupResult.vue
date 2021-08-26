@@ -2,7 +2,7 @@
 <div class="signup-result">
   <div>
     <h1>{{registorStatus.status}}</h1>
-    <p v-if="registorStatus.err">{{status.err}} 請重新註冊</p>
+    <p v-if="registorStatus.err">{{registorStatus.err}} 請重新註冊</p>
     <p v-else>{{registorStatus.registerMember.name}}註冊成功</p>
     <p>10 秒後將跳轉到首頁</p>
   </div>  
@@ -30,15 +30,15 @@ export default{
 }
 </script>
 
-<style>
+<style lang="scss">
 .signup-result{
-    height:200px;
     display:flex;
     align-items:center;
-}
-.signup-result div{
-    width:300px;
-    margin:auto;
-    border:1px solid red;
+
+    div{
+      width:500px;
+      margin:50px auto;
+      background:#c4d6e8;
+    }
 }
 </style>

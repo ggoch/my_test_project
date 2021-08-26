@@ -82,7 +82,7 @@ export default{
             password:password,
             email:email
           };
-          this.registor(data);
+          await this.registor(data);
           this.$router.push({path:'/sign_up/signup_result'});
       }
     },
@@ -97,91 +97,109 @@ export default{
 }
 </script>
 
-<style>
-#signUp{
-    margin:20px 0;
-}
-#signUp form {
+<style lang="scss">
+#signUp .container{
+  margin:20px 0;
+
+  form{
     width:1000px;
     max-width:100%;
     margin:0 auto;
-}
-form .form-data{
-    display:flex;
-    flex-flow:column;
-    //justify-content:center;
-    margin:20px;
-    border-bottom:1px solid blue;
-}
-form .form-data>div{
-    width:100%;
-    display:flex;
-    //flex-flow:column;
-    justify-content:center;
-    align-items:center;
-    margin:20px 0;
-}
-form .form-data>div label{
-  width:20%;
-  text-align:right;
-  font-size:16px;
-  margin-right:10px;
-}
-form .form-data>div input{
-  width:20%;
-  max-width:150px;
-  height:20px;
-  margin-right:10px;
-}
-form .form-data>div p{
-  width:60%;
-  font-size:13px;
-  color:#9D9D9D;
-}
-form .form-data>div:nth-child(3) p{
-  color:red;
-}
-.data-submit{
-    display:flex;
-    justify-content:center;
-    margin:20px;
-}
-.data-submit input[type="button"]{
-    width:120px;
-    height:30px;
-    text-align:center;
-    line-height:30px;
-    background:#FF8000;
-    color:#fff;
-    border:1px solid #FFBB77;
-    border-radius:2px;
-    cursor:pointer;
-}
-.data-submit input[type="button"]:hover{
-  background:#FF9224;
-}
-@media(max-width:600px){
-  .form-data{
-    align-items:center;
+
+    .form-data{
+      display:flex;
+      flex-flow:column;
+      //justify-content:center;
+      margin:20px;
+      border-bottom:1px solid blue;
+
+      >div{
+        width:100%;
+        display:flex;
+        //flex-flow:column;
+        justify-content:center;
+        align-items:center;
+        margin:20px 0;
+
+        label{
+          width:20%;
+          text-align:right;
+          font-size:16px;
+          margin-right:10px;
+        }
+
+        input{
+          width:20%;
+          max-width:150px;
+          height:20px;
+          margin-right:10px;
+        }
+
+        p{
+          width:60%;
+          font-size:13px;
+          color:#9D9D9D;
+        }
+
+        &:nth-child(3) p{
+          color:red;
+        }
+      }
+    }
+
+    .data-submit{
+      display:flex;
+      justify-content:center;
+      margin:20px;
+
+      input[type="button"]{
+        width:120px;
+        height:30px;
+        text-align:center;
+        line-height:30px;
+        background:#FF8000;
+        color:#fff;
+        border:1px solid #FFBB77;
+        border-radius:2px;
+        cursor:pointer;
+
+        &:hover{
+          background:#FF9224;
+        }
+      }
+    }
   }
-  form .form-data>div{
-    width:70%;
-    flex-flow:column;
-    align-items:flex-start;
-  }
-  form .form-data>div label{
-    width:100%;
-    text-align:left;
-    margin-right:0;
-    margin-bottom:10px;
-  }
-  form .form-data>div input{
-    width:100%;
-    margin-right:0;
-    margin-bottom:10px;
-  }
-  form .form-data>div p{
-    width:100%;
+}
+@media(max-width:576px){
+  #signUp .container{
+    form{
+      .form-data{
+        align-items:center;
+
+        >div{
+          width:70%;
+          flex-flow:column;
+          align-items:flex-start;
+
+          label{
+            width:100%;
+            text-align:left;
+            margin-right:0;
+            margin-bottom:10px;
+          }
+
+          input{
+            width:100%;
+            margin-right:0;
+            margin-bottom:10px;
+          }
+
+          p{
+            width:100%;
+          }
+        }
+      }
+    }
   }
 }
 </style>

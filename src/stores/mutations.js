@@ -8,8 +8,12 @@ export const mutations = {
   },
   [types.REGISTOR](state,status){
     state.status.registor.status = status.status;
-    state.status.registor.err = status.err;
-    state.status.registor.registerMember.name = status.registerMember.name;
+    if(status.err){
+      state.status.registor.err = status.err;
+    }else{
+      state.status.registor.registerMember.name = status.registerMember.name;
+    }
+    
   },
   [types.SHOWPRODUCT](state,data){
     let commodity = [];
